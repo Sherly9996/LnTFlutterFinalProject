@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   String? _name;
 
   Future<void> getData() async {
-    final user = await _auth.currentUser;
+    final user = _auth.currentUser;
     if (user != null) {
       final doc = await _db.collection('users').doc(user.uid).get();
       setState(() {
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(_name == null ? "Welcome..." : "Welcome $_name", style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w600)),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               SizedBox(
                 width: double.infinity,
                 height: 50,
